@@ -11,19 +11,8 @@ app = Flask(
     instance_relative_config=False,
     template_folder="templates",
     static_folder="static")
+
 app.config["SQLALCHEMY DATABASE_URI"] = 'sqlite:///city_data_base.db'  # sqlite можно поменять на POSTGRES
-db = SQLAlchemy(app)
-
-
-class City(db.Model):
-    id = db.Column(db.Integer, primary_key=True)  # --
-    City = db.Column(db.String(50), nollable=False)
-    weather = db.Column(db.Text, nullable=False)
-    date = db.Column(db.DateTime, default=datetime.utcnow())
-
-    def __repr__(self):
-        return '<City %r>' % self.id
-
 
 @app.route('/')  # http://localhost:5000/
 @app.route('/main')
