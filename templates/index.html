@@ -1,16 +1,52 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погодный помощник</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Погодный помощник</h1>
+            <p>Узнайте текущую погоду в любом городе</p>
+        </div>
 
-{% block title %}
-Main page
-{% endblock %}
+        <div class="weather-form">
+            <form method="POST">
+                <div class="form-group">
+                    <input type="text" name="city" placeholder="Введите город" required>
+                    <button type="submit">Узнать погоду</button>
+                </div>
+            </form>
+        </div>
 
-{% block body %}
-<h1>Тут мой текст</h1>
-<table>
-    <tr>
-        <td>
-            <button class="btn btn-outline btn-info">test_button</button>
-        </td>
-    </tr>
-</table>
-{% endblock %}
+        {% if weather %}
+            {% if weather.cod == 200 %}
+            <div class="weather-card">
+                <h2>Погода в {{ weather.name }}</h2>
+                <div class="weather-info">
+                    <div class="weather-item">
+                        <p class="temperature">{{ weather.main.temp }}°C</p>
+                        <p class="feels-like">Ощущается как {{ weather.main.feels_like }}°C</p>
+                    </div>
+                    <div class="weather-item">
+                        <p class="description">{{ weather.weather[0].description }}</p>
+                        <p>Влажность: {{ weather.main.humidity }}%</p>
+                    </div>
+                    <div class="weather-item">
+                        <p>Ветер: {{ weather.wind.speed }} м/с</p>
+                        <p>Давление: {{ weather.main.pressure }} гПа</p>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="error">
+                <p>Город не найден. Попробуйте другой вариант.</p>
+            </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
