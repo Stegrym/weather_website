@@ -1,12 +1,14 @@
 import requests
-from config import API_key
+from flask import current_app
 
 
 def get_weather(city):
     base_url = "http://api.openweathermap.org/data/2.5/weather"
+    api_key = current_app.config['OPENWEATHER_KEY']
+
     params = {
         'q': city,
-        'appid': API_key,
+        'appid': api_key,
         'units': 'metric',
         'lang': 'ru',
     }
