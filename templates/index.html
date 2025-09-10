@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+<link rel="icon" href="/static/cloud.jpg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
+    <header style="display: flex; align-items: center;">
+        <a title="Home page" href="/"><img src="/static/cloud.jpg" width="100" height="100" alt="logo"></a>
+        <h1>Weather search website</h1>
+        <input style="margin-left: auto; margin: 0;" type="email"  placeholder="@email">
+    </header>
+    <section class="container">
         <div class="header">
             <h1>Поиск погоды</h1>
             <p>Узнайте текущую погоду в нужном городе</p>
@@ -47,6 +53,6 @@
             </div>
             {% endif %}
         {% endif %}
-    </div>
+    </section>
 </body>
 </html>
