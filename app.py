@@ -30,7 +30,7 @@ def create_app(config_name="develop"):
         if request.method == "POST":
             city = request.form.get('city')
             weather_data = get_weather(city)
-        return render_template("index.html", weather=weather_data)
+        return render_template("base.html", weather=weather_data)
 
     return app
 

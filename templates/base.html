@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="img/jpg" sizes="32x32" href="static/images/cloud.jpg">
+    <title>weather-website</title>
+    <style>
+        body {
+            background: #6a8a3b;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+<header class="header">
+    <a title="Главная страница" href="/">
+        <img src="static/images/cloud.jpg" width="120" height="120">
+    </a>
+</header>
+
+<main class="main">
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <h3>Контакты</h3>
+        <ul>
+            <li>
+                <a title="@MrStegrim" href="https://t.me/MrStegrim" target="_blank">Мой телеграмм</a>
+            </li>
+        </ul>
+    </div>
+</footer>
+</body>
